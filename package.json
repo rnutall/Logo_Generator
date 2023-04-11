@@ -1,6 +1,11 @@
 {
+  "name": "SVG-Logo-Maker",
+  "lockfileVersion": 2,
+  "requires": true,
+  "packages": {
+    "": {
   "dependencies": {
-    "inquirer": "^8.2.5",
+    "inquirer": "^8.2.4",
     "jest": "^29.5.0"
   }
 }
