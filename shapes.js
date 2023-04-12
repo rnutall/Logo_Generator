@@ -1,6 +1,6 @@
 class square{
     constructor(){
-        this.color = ""
+        this.color = "";
     }
     setColor(color){
         this.color = (color);
@@ -12,7 +12,7 @@ class square{
 {
 class Triangle{
     constructor(){
-        this.color = ""
+        this.color = "";
     }
     setColor(color){
         this.color = (color);
@@ -25,7 +25,7 @@ class Triangle{
 
 class Circle{
     constructor(){
-        this.color=''
+        this.color='';
     }
     setColor(color){
         this.color=(color);

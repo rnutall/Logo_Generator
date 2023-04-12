@@ -1,9 +1,9 @@
-const {Circle, Triangle, Square} = require(".shapes.js");
+const {Circle, Triangle, Square} = require("./shapes.test.js");
 
 // Test of circle
 describe ("Circle", () => {
-    Test("Cirle rendered correctly", () => {
-        const shape = new Circle;
+    test("Cirle rendered correctly", () => {
+        const shape = "newCircle";
         var color = "marroon";
         shape.setColor(color);
         expect(shape.render()).toEqual('<circle cx="50%" cy="50%" r="100" height="100%" width="100%" fill="${color}" />');
@@ -12,8 +12,8 @@ describe ("Circle", () => {
 });
 // test for Triangle
 describe ("Triangle", () => {
-    Test("Triangle rendered correctly", () => {
-        const shape = new Triangle;
+    test("Triangle rendered correctly", () => {
+        const shape = "newTriangle";
         var color = "marroon";
         shape.setColor(color);
         expect(shape.render()).toEqual('<rect cx="50%" cy="50%" r="100" height="100%" width="100%" fill="${color}" />');
@@ -22,8 +22,8 @@ describe ("Triangle", () => {
 });
 // test for square
 describe ("Square", () => {
-    Test("Square rendered correctly", () => {
-        const shape = new Square;
+    test("Square rendered correctly", () => {
+        const shape = "newSquare";
         var color = "marroon";
         shape.setColor(color);
         expect(shape.render()).toEqual('<polygon cx="50%" cy="50%" r="100" height="100%" width="100%" fill="${color}" />');

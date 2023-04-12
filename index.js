@@ -1,12 +1,12 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const {Circle, Square, Triangle}= require("./lib/shapes.js");
+const {Circle, Triangle, Square} = require("./shapes.test.js");
 const SVG = require("./lib/svg.js");
 let newssvg;
 let svgData;
 let sloagan;
 let shape;
-let shape_colornpm
+let shape_colornpm;
 
 //prompt for slogan 
 const questions = [
