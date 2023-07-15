@@ -1,60 +1,82 @@
 const inquirer = require("inquirer");
 const fs = require('fs');
-const {Circle, Triangle, Square} = require("./shapes.test.js");
-const SVG = require("./lib/svg.js");
-let newssvg;
-let svgData;
-let sloagan;
-let shape;
-let shape_colornpm;
+const {Circle, Square, Triangle} = require("./lib/shapes.js");
 
+class SVG {
+constructor(){
+    this.textElement = ''
+    this.shapeElement = ''
+}
+render(){
+    return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">${this.shapeElement}${this.textElement}</svg>`
+}
+setTextElement(text,color){
+    this.textElement = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${color}">${text}</text>`
+}
+setShapeElement(shape){
+    this.shapeElement = shape.render()
+
+}
+
+}
+
+// Defines array of 'questions' using the inquirer library
 //prompt for slogan 
 const questions = [
     {
-    name: "slogan",
-message: "what is your business slogan?",
- type: "input",
+    name: "text",
+type: "input",
+message: "TEXT: Enter up to (3) characters: ",
 
  //prompt for text color, then i can enter color keyword or [hexadecimal]
 name: "text_color",
-meassage: "what color is your logo text?",
-    type: "input",
+type: "input",
+message: "TEXT COLOR: Enter a color for your logo",
 
- // promt for shape, presented with a list circle, triangle, square
+name: "shape",
+type: "input",
+message: "SHAPE COLOR: Enter a color for your logo",
+
+ // prompt for shape, presented with a list circle, triangle, square
      name: "shape",
-     meassage: "Choose a shape Circle, Triangle, Square",
-     type: "input",
+     message: "Choose a shape Circle, Triangle, Square",
+     type: "list",
      selection: ["Circle, Triangle, Square"],
 
-    //promt for shape color, thern enter color keyword or [hexadecimal]
-    name: "shape_color",
-    message: "What color would you like your shape?",
-    type: "input"
+    
 }];
 
 // function to write to file and prompts.
-function makeFile(data) {
- fs.writeFile("./deliverable/logo.svg", data, err => {
+function writeToFile(fileName, data) {
+ fs.writeToFile(fileName, data, function (error) 
+  {
 
-    if (err) {
-        console.log("err");
+    if (error) {
+        console.log("error");
     }
+    console.log('Congratulations, you have generated a logo.svg! ');
     });
 }  
 //when all prompts are entered, then SVG IS CREATED 'logoSVG'
-inquirer
-.prompt(questions)
-.then(answers => {
-    console.log(answers);
 
-    if (answers.slogan.length > 0 && answers.slogan,length < 4){
-        slogan = answers.slogan;
-    }
-    else{
+// prompt loop to initialize the questions
+async function promptLoop() {
+    const and = await inquirer
+.prompt(questions)
+let enteredLength = answers.slogan.length 
+
+if (enteredLength === 0 || enteredLength > 3 || enteredLength < 3)
+{
+    console.log('invalid input')
+    return promptLoop()
+};
+
+    const answers = await inquirer.prompt(questions);
+        
         console.log("Enter three characters");
         return;
     }
-    text_color = answers.text_color;
+    user_text = answers.prompt(questions);
     switch(answers.shape){
         case "Square":
             shape = new Square;
@@ -70,10 +92,24 @@ inquirer
     }
     shape.setColor(answers.color);
     newsvg = new SVG();
-    newsvg.setText(slogan, text_color);
+    newsvg.setText(moto, text_color);
     newsvg.setShape(shape);
     svgData = newsvg.render();
     //console.log(svgData);
     makeFile(svgData);
-    });
+    ;
+{
+    var svg = new SVG();
 
+    svg.setTextElement(user_text, user_font_color);
+    svg.setShapeElement(user_shape);
+    svgString = svg.render();
+    
+    //print shape to log
+    console.log("Display shape:\n\n" + svgString);
+    console.log("Shape generation complete!");
+    console.log("Writing shape to file...");
+    writeToFile(svg_file, svgString);
+    }
+    init();
+    
