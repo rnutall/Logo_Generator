@@ -83,7 +83,7 @@ if (enteredLength === 0 || enteredLength > 3 || enteredLength < 3)
             break;
 
             case "Triangle":
-                shape = new "Triangle";
+                shape = new Triangle;
                 break;
                 
                 case  "Circle":
